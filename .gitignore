@@ -1,3 +1,11 @@
+#pycharm
 /.idea/
-db.sqlite3
+
+
+#virtual enviroment
 venv/
+
+
+#database
+db.sqlite3
+blogapp/migrations

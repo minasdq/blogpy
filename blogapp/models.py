@@ -16,8 +16,7 @@ class UserProfile(models.Model):
 	user=models.OneToOneField(User,on_delete=models.CASCADE)
 	avatar=models.FileField(upload_to='files/avatar/',blank=False,null=False,validators=[valid_image])
 	description=models.CharField(max_length=512,blank=False,null=False)
-	def __str__(self):
-		return '{}'.format(self.user)
+
 class article(models.Model):
 	title=models.CharField(max_length=50 , blank=False , null=False)
 	cover=models.FileField(upload_to='files/cover_article/', blank=False, null=False,validators=[valid_image])
@@ -25,10 +24,8 @@ class article(models.Model):
 	date=models.DateTimeField(default=datetime.now(),blank=False)
 	category=models.ForeignKey('category',on_delete=models.CASCADE)
 	authoe=models.OneToOneField(UserProfile,on_delete=models.CASCADE)
-	def __str__(self):
-		return '{}'.format(self.title)
+
 class category (models.Model):
 	title=models.CharField(max_length=50, blank=False,null=False)
 	cover=models.FileField(upload_to='files/cover_category/',blank=False , null=False,validators=[valid_image])
-	def __str__(self):
-		return self.title + "*"
+

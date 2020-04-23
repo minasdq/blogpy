@@ -15,3 +15,5 @@ blogapp/migrations
 #upload
 /files/
 
+#static
+/staticfiles/

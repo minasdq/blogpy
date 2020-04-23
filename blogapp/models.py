@@ -16,16 +16,20 @@ class UserProfile(models.Model):
 	user=models.OneToOneField(User,on_delete=models.CASCADE)
 	avatar=models.FileField(upload_to='files/avatar/',blank=False,null=False,validators=[valid_image])
 	description=models.CharField(max_length=512,blank=False,null=False)
+	def __str__(self):
+		return self.user.first_name +" "+self.user.last_name
 
-class article(models.Model):
+class Article(models.Model):
 	title=models.CharField(max_length=50 , blank=False , null=False)
 	cover=models.FileField(upload_to='files/cover_article/', blank=False, null=False,validators=[valid_image])
 	content=RichTextField()
 	date=models.DateTimeField(default=datetime.now(),blank=False)
 	category=models.ForeignKey('category',on_delete=models.CASCADE)
-	authoe=models.OneToOneField(UserProfile,on_delete=models.CASCADE)
+	authoe=models.ForeignKey(UserProfile,on_delete=models.CASCADE)
+	promote=models.BooleanField(default=False)
 
 class category (models.Model):
 	title=models.CharField(max_length=50, blank=False,null=False)
 	cover=models.FileField(upload_to='files/cover_category/',blank=False , null=False,validators=[valid_image])
-
+	def __str__(self):
+		return self.title

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import UserProfile,article,category
+from .models import UserProfile,Article,category
 
 class UserProfileAdmin(admin.ModelAdmin):
 	list_display = ['user','description']
@@ -11,7 +11,7 @@ class articleAdmin(admin.ModelAdmin):
 	list_display = ['title','category','date']
 	search_fields = ['title','category','date']
 
-admin.site.register(article, articleAdmin)
+admin.site.register(Article, articleAdmin)
 
 class categoryAdmin(admin.ModelAdmin):
 	list_display = ['title']
